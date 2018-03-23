@@ -84,20 +84,17 @@ export default class RecipeBox extends React.Component {
       ingredients: e.target.elements.ingredients.value.split(",")
     }
 
+    let updatedState;
+
     if(e.target.innerHTML.includes('Add Recipe')) {
-      this.setState((prevState) => {
-        return {
-          recipes: [...prevState.recipes, newRecipe],
-          modalIsOpen: false,
-          error: ''
-        }
-      }, () => {
-        this.saveToLocalStorage(this.state);
-      });
+      updatedState = {
+        recipes: [...this.state.recipes, newRecipe],
+        modalIsOpen: false,
+        error: ''
+      }  
     } else {
-      this.setState((prevState) => {
-        return {
-          recipes: prevState.recipes.map((el, i) => {
+      updatedState = {
+          recipes: this.state.recipes.map((el, i) => {
             if(i == this.state.modalIndex){
               return newRecipe;
             } 
@@ -106,10 +103,11 @@ export default class RecipeBox extends React.Component {
           modalIsOpen: false,
           error: ''
         }
-      }, () => {
-        this.saveToLocalStorage(this.state);
-      });
-    }
+      }
+    
+    this.setState(updatedState, () => {
+      this.saveToLocalStorage(this.state);
+    });
   }
 
   render() {   
