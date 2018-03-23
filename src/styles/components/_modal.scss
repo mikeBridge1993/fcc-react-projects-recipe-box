@@ -1,0 +1,7 @@
+.ReactModal__Content.ReactModal__Content--after-open{
+  width: 500px;
+ @media(max-width: $break-small) {
+  width: 330px;
+ }
+}
+

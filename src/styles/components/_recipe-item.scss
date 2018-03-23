@@ -1,0 +1,18 @@
+.card-header{
+  h5 {
+    div{
+        word-break: break-all;
+        white-space: normal;
+    }
+  }
+}
+
+
+ .card-body{
+  .btn-delete{
+      margin-left: 10px;
+      @media(max-width: $break-small) {
+        margin-left: 0px;
+      }
+  }
+}
